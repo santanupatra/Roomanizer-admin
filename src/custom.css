@@ -1,0 +1,29 @@
+.todo-list > li:first-child {
+    border-top: none;
+}
+.todo-list > li {
+    border-top: 1px solid #F0F0F0;
+    position: relative;
+}
+.todo-list > li p {
+    margin: 0;
+    padding: 20px 0 20px 35px;
+}
+.todo-list .title {
+    font-size: 16px;
+    font-weight: 600;
+}
+.todo-list .short-description {
+    display: block;
+    margin-top: 5px;
+}
+.show-image {
+    height: 100px;
+    width: 100px;
+}
+.input-image {
+    max-height: 150px;
+}
+.input-image img {
+    height: 100%;
+}

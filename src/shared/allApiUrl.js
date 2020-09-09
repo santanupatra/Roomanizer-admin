@@ -1,0 +1,17 @@
+export const LOGIN_URL = 'admin-api/adminLogin';
+export const LOGOUT_URL = '';
+export const PROFILE_URL = 'admin-api/admin';
+export const USER_URL = 'user-api/user';
+// export const CHEF_URL = 'chef-api/chef';
+export const UNIVERSITY_URL = '';
+export const CHANGE_PASSWORD_URL = 'admin-api/admin/change-password';
+export const SETTINGS_URL = 'setting-api/setting';
+// export const CMS_URL = 'cms-api/cms';
+// export const FOOD_URL = 'food-api/food-category'
+// export const EMAIL_URL = 'email-api/email';
+// export const SERVICE_URL = 'service-api/service'
+// export const ORDER_URL = '';
+// export const TRIP_URL = '';
+// export const CITY_URL = 'city-api/city';
+// export const PROVINCE_URL = 'province-api/province';
+// export const DASHBOARD_URL = 'dashboard-api/dashboard';
