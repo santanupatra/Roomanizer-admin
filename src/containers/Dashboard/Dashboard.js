@@ -522,7 +522,7 @@ class Dashboard extends Component {
                   </ButtonDropdown>
                 </ButtonGroup>
                 <div className="text-value">9.823</div>
-                <div>Users online</div>
+                <div>Members online</div>
               </CardBody>
               <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
                 <Line data={cardChartData2} options={cardChartOpts2} height={70} />
@@ -550,7 +550,7 @@ class Dashboard extends Component {
                   </Dropdown>
                 </ButtonGroup>
                 <div className="text-value">9.823</div>
-                <div>Chefs online</div>
+                <div>Members online</div>
               </CardBody>
               <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
                 <Line data={cardChartData1} options={cardChartOpts1} height={70} />
@@ -668,21 +668,21 @@ class Dashboard extends Component {
 }
 
 
-const mapStateToProps = state => {
-  const { user,chef } = state;
-  return {
-    user,
-    chef
-  }
-}
+// const mapStateToProps = state => {
+//   const { user,chef } = state;
+//   return {
+//     user,
+//     chef
+//   }
+// }
 
-const mapDispatchToProps = dispatch => {
-  return {
-      crudActionUserCall: (url, data, actionType) => dispatch(crudAction(url, data, actionType, "USER")),
-      crudActionChefCall: (url, data, actionType) => dispatch(crudAction(url, data, actionType, "CHEF"))
+// const mapDispatchToProps = dispatch => {
+//   return {
+//       crudActionUserCall: (url, data, actionType) => dispatch(crudAction(url, data, actionType, "USER")),
+//       crudActionChefCall: (url, data, actionType) => dispatch(crudAction(url, data, actionType, "CHEF"))
 
-  }
-}
+//   }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Dashboard));
-// export default Dashboard;
+// export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Dashboard));
+export default Dashboard;
