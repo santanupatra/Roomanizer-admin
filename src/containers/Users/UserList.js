@@ -60,7 +60,6 @@ function UserList(props) {
                                 <tbody>
                                     {props.user && props.user.userList.count > 0 ?
                                         props.user.userList.list.map((val) => {
-                                            if(val.userType==="customer"){
                                             return (
                                                 <tr>
                                                    
@@ -81,7 +80,7 @@ function UserList(props) {
                                                         </Button>
                                                     </td>
                                                 </tr>
-                                            );}
+                                            );
                                         })
 
                                         : null}
