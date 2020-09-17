@@ -3,7 +3,7 @@ import auth from "./auth";
 import dashboard from './dashboard';
 import profile from "./profile";
 import user from './user';
-// import chef from './chef';
+import landlord from './landlord';
 // import cms from './cms';
 // import email from './email';
 import setting from './setting';
@@ -17,7 +17,7 @@ export default combineReducers({
     dashboard,
     profile,
     user,
-    // chef,
+    landlord,
     // email,
     // cms,
     // food,

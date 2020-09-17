@@ -16,7 +16,7 @@ import {
 import InputUI from '../../UI/InputUI';
 import FileInput from "../../UI/FileInput";
 import { getImageUrl } from '../../shared/helpers';
-import { USER_URL } from '../../shared/allApiUrl';
+import { LANDLORD_URL } from '../../shared/allApiUrl';
 import { crudAction } from '../../store/actions/common';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -30,7 +30,7 @@ const palceKey = "AIzaSyA5LrPhIokuSBO5EgKEcfu859gog6fRF8w";
   Geocode.setApiKey(palceKey);
   Geocode.setLanguage("en");
 
-function UserForm(props) {
+function LandlordForm(props) {
 
   const initialFields = {
     firstName: "",
@@ -49,40 +49,40 @@ function UserForm(props) {
   }
   
   const [fields, setFields] = useState(initialFields);
-  const [userId, setUserId] = useState(null);
+  const [landlordId, setLandlordId] = useState(null);
   const { handleSubmit, register, errors } = useForm();
   const params = props.match.params;
 
   useEffect(() => {
-    setUserId(params.userId)
-    if (params.userId) props.crudActionCall(`${USER_URL}/${params.userId}`, null, "GET")
+    setLandlordId(params.landlordId)
+    if (params.landlordId) props.crudActionCall(`${LANDLORD_URL}/${params.landlordId}`, null, "GET")
   }, [params]);
 
   useEffect(() => {
-    const action = props.user.action;
-    if (props.user.user && params.userId) {
-      setFields({ ...fields, ...props.user.user })
+    const action = props.landlord.action;
+    if (props.landlord.landlord && params.landlordId) {
+      setFields({ ...fields, ...props.landlord.landlord })
     }
     if (action.isSuccess && action.type === "ADD" || action.type === "UPDATE")
-      props.history.push("/user/list")
+      props.history.push("/landlord/list")
 
-  }, [props.user]);
+  }, [props.landlord]);
 
   const onSubmit = (data) => {
     data.longitude = fields.longitude;
     data.latitude = fields.latitude;
     data.address = fields.address;
     data.profilePicture = data.profilePicture[0];
-    if (userId) data.userId = userId;
+    if (landlordId) data.landlordId = landlordId;
     let formData = new FormData();
     for (let [key, value] of Object.entries(data)) {
       formData.append(key, value);
     }
-    if (userId) {
-      props.crudActionCall(USER_URL + `/${userId}`, formData, userId ? "UPDATE" : "ADD");
+    if (landlordId) {
+      props.crudActionCall(LANDLORD_URL + `/${landlordId}`, formData, landlordId ? "UPDATE" : "ADD");
     }
     else {
-      props.crudActionCall(USER_URL, formData, userId ? "UPDATE" : "ADD");
+      props.crudActionCall(LANDLORD_URL, formData, landlordId ? "UPDATE" : "ADD");
     }
     props.resetAction();
   }
@@ -135,7 +135,7 @@ function UserForm(props) {
         <Col xs="12">
           <Card>
             <CardHeader>
-              <i className="fa fa-edit"></i>{userId ? `User Update` : `User Add`}
+              <i className="fa fa-edit"></i>{landlordId ? `Landlord Update` : `Landlord Add`}
             </CardHeader>
             <Form className="form-horizontal" onSubmit={handleSubmit(onSubmit)}>
               <CardBody>
@@ -255,7 +255,7 @@ function UserForm(props) {
                     />
                 </FormGroup>
 
-                {!userId && <InputUI
+                {!landlordId && <InputUI
                   label="Password"
                   name="password"
                   type="password"
@@ -276,7 +276,7 @@ function UserForm(props) {
                   })}
                   fields={fields}
                 />
-              {userId ? (
+              {landlordId ? (
                   <div className="text-center" style={{ height: 150 }}>
                   <img src={getImageUrl(fields.profilePicture)} className="rounded-circle" style={{ height: "100%" }} alt="..." />
                   {/* <img src={'assets/img/dummy-profile-img.png'} class="rounded-circle" width="200" /> */}
@@ -291,7 +291,7 @@ function UserForm(props) {
                   errors={errors}
                   required={false}
                 />
-                {userId ? (
+                {landlordId ? (
                   <CheckboxUI
                     type="checkbox"
                     label="Status"
@@ -316,17 +316,17 @@ function UserForm(props) {
 }
 
 const mapStateToProps = state => {
-  const { user } = state;
+  const { landlord } = state;
   return {
-    user
+    landlord
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    crudActionCall: (url, data, actionType) => dispatch(crudAction(url, data, actionType, "USER")),
-    resetAction: () => dispatch({ type: "RESET_USER_ACTION" })
+    crudActionCall: (url, data, actionType) => dispatch(crudAction(url, data, actionType, "LANDLORD")),
+    resetAction: () => dispatch({ type: "RESET_LANDLORD_ACTION" })
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UserForm));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(LandlordForm));
