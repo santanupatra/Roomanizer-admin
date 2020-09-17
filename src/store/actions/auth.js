@@ -15,7 +15,7 @@ export const login = (data) => {
     console.log('login data==>', data)
 
     return async dispatch => {
-        Axios.post('http://127.0.0.1:5073/admin/admin-api/adminLogin ', data)
+        Axios.post('http://111.93.169.90:7082/admin/admin-api/adminLogin ', data)
             .then((response) => {
                 console.log('api res', response)
                 if (response.status === 201) {

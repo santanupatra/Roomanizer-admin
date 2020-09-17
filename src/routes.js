@@ -10,9 +10,9 @@ const RoomForm = React.lazy(() => import('./containers/Room/RoomForm'));
 const RoomList = React.lazy(() => import('./containers/Room/RoomList'));
 const RoomDetails = React.lazy(() => import('./containers/Room/RoomDetails'));
 
-// const ChefForm = React.lazy(() => import('./containers/Chef/ChefForm'));
-// const ChefList = React.lazy(() => import('./containers/Chef/ChefList'));
-// const ChefDetails = React.lazy(() => import('./containers/Chef/ChefDetails'));
+const LandlordForm = React.lazy(() => import('./containers/Landlord/LandlordForm'));
+const LandlordList = React.lazy(() => import('./containers/Landlord/LandlordList'));
+const LandlordDetails = React.lazy(() => import('./containers/Landlord/LandlordDetails'));
 
 // const CMSForm = React.lazy(() => import('./containers/CMS/CMSForm'));
 // const CMSList = React.lazy(() => import('./containers/CMS/CMSList'));
@@ -22,9 +22,9 @@ const RoomDetails = React.lazy(() => import('./containers/Room/RoomDetails'));
 // const FoodList = React.lazy(() => import('./containers/Food/FoodList'));
 // const FoodDetails = React.lazy(() => import('./containers/Food/FoodDetails'));
 
-// const CityForm = React.lazy(() => import('./containers/City/CityForm'));
-// const CityList= React.lazy(() => import('./containers/City/CityList'));
-// const CityDetails = React.lazy(() => import('./containers/City/CityDetails'));
+const CityForm = React.lazy(() => import('./containers/City/CityForm'));
+const CityList= React.lazy(() => import('./containers/City/CityList'));
+const CityDetails = React.lazy(() => import('./containers/City/CityDetails'));
 
 // const ServiceForm = React.lazy(() => import('./containers/Service/ServiceForm'));
 // const ServiceList = React.lazy(() => import('./containers/Service/ServiceList'));
@@ -69,6 +69,13 @@ const routes = [
 //   { path: '/chef/list', name: "List", component: ChefList },
 //   { path: '/chef/details/:chefId', name: "Details", component: ChefDetails },
 
+  // ------------------------------ Manage Landlord --------------------------------
+  { path: '/landlord', exact: true, name: "Landlord", component: LandlordList },
+  { path: '/landlord/add', name: "Add", component: LandlordForm },
+  { path: '/landlord/edit/:landlordId', name: "Edit", component: LandlordForm },
+  { path: '/landlord/list', name: "List", component: LandlordList },
+  { path: '/landlord/details/:landlordId', name: "Details", component: LandlordDetails },
+
 //   //------------------------------ Manage CMS --------------------------------
 //   { path: '/cms', exact: true, name: "CMS", component: CMSList },
 //   { path: '/cms/add', name: "Add", component: CMSForm },
@@ -90,12 +97,12 @@ const routes = [
 //   { path: '/service/list', name: "List", component: ServiceList },
 //   { path: '/service/details/:serviceId', name: "Details", component: ServiceDetails },
 
-//  //-----------------------------Manage City------------------------------------
-//  { path: '/city', exact: true, name: "City", component: CityList },
-//  { path: '/city/add', name: "Add", component: CityForm },
-//  { path: '/city/edit/:cityId', name: "Edit", component: CityForm },
-//  { path: '/city/list', name: "List", component: CityList },
-//  { path: '/city/details/:cityId', name: "Details", component: CityDetails },
+ //-----------------------------Manage City------------------------------------
+ { path: '/city', exact: true, name: "City", component: CityList },
+ { path: '/city/add', name: "Add", component: CityForm },
+ { path: '/city/edit/:cityId', name: "Edit", component: CityForm },
+ { path: '/city/list', name: "List", component: CityList },
+ { path: '/city/details/:cityId', name: "Details", component: CityDetails },
 
 //  //-----------------------------Manage Province------------------------------------
 //  { path: '/province', exact: true, name: "Province", component: ProvinceList },

@@ -5,12 +5,13 @@ import profile from "./profile";
 import user from './user';
 import room from './room';
 // import chef from './chef';
+import landlord from './landlord';
 // import cms from './cms';
 // import email from './email';
 import setting from './setting';
 // import food from './food';
 // import service from './service';
-// import city from './city'
+ import city from './city'
 // import province from './province'
 
 export default combineReducers({
@@ -20,12 +21,13 @@ export default combineReducers({
     user,
     room,
     // chef,
+    landlord,
     // email,
     // cms,
     // food,
     // service,
     setting,
-    // city,
+     city,
     // province,
 
 })

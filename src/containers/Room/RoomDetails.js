@@ -10,23 +10,25 @@ import '../../custom.css';
 import { connect } from "react-redux";
 import { crudAction } from "../../store/actions/common";
 import { ROOM_URL } from '../../shared/allApiUrl';
-import { getImageUrl } from '../../shared/helpers';
-import moment from 'moment'
+import moment from 'moment';
+import CKEditor from 'ckeditor4-react'
 
-function RoomDetails(props) {
-  let roomId = props.match.params.rooomId;
+function BookingDetails(props) {
+  let roomId = props.match.params.roomId;
   // const userData = props.user.user;
-  const [roomData, setRoomDate] = useState(null);
-
+  const [cmsData, setCmsDate] = useState(null);
 
   useEffect(() => {
+
     props.crudActionCall(`${ROOM_URL}/${roomId}`, null, "GET")
-    setRoomDate(props.room.action.data);
+    // let viewData = props.cms.cmsList.filter(f => f._id === parseInt(cmsId));
+    // setCmsDate(viewData);
 
     return () => {
 
     }
   }, []);
+
 
 
   return (
@@ -35,40 +37,46 @@ function RoomDetails(props) {
         <Col xs="12">
           <Card>
             <CardHeader>
-              <i classNameName="fa fa-edit"></i>Room views
+              <i classNameName="fa fa-edit"></i>Booking Details
                 </CardHeader>
             <CardBody>
-
-              {props.room.action.data && (
+              {(roomId && props.room.room) && (
                 <ul className="list-unstyled todo-list">
                   <li>
                     <p>
                       <span className="title">No Of Room</span>
-                      <span className="short-description">{props.room.action.data.roomNo}</span>
-                    </p>
-                  </li>
-
-                  <li>
-                    <p>
-                    <span className="title">No Of Bath</span>
-                      <span className="short-description">{props.room.action.data.bathNo}</span>
+                      <span className="short-description">{`${props.room.room.roomNo}`}</span>
                     </p>
                   </li>
                   <li>
                     <p>
-                    <span className="title">Address</span>
-                      <span className="short-description">{props.room.action.data.address}</span>
-                 </p>
+                      <span className="title">No Of Bath</span>
+                      <span className="short-description">{`${props.room.room.bathNo}`}</span>
+                    </p>
                   </li>
                   <li>
                     <p>
-                      <span className="title">Status</span>
-                      <span className="short-description">{props.user.action.data.isActive ? "Active" : "Inactive"}</span>
+                      <span className="title">Address</span>
+                      <span className="short-description">{`${props.room.room.address}`}</span>
                     </p>
                   </li>
+                  <li>
+                    <p>
+                      <span className="title">City</span>
+                      <span className="short-description">{`${props.room.room.city}`}</span>
+                    </p>
+                  </li>
+                
                   
-                </ul>
+                  
+                  
+                  
+                  
+                  
+                  </ul>
+                
               )}
+
             </CardBody>
           </Card>
         </Col>
@@ -79,6 +87,7 @@ function RoomDetails(props) {
 
 const mapStateToProps = state => {
   const { room } = state;
+  //console.log('cmsDetails', province)
   return {
     room
   }
@@ -86,8 +95,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    crudActionCall: (url, data, actionType) => dispatch(crudAction(url, data, actionType, "ROOOM"))
+    crudActionCall: (url, data, actionType) => dispatch(crudAction(url, data, actionType, "ROOM"))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RoomDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(BookingDetails);

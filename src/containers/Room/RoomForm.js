@@ -45,6 +45,7 @@ function RoomForm(props) {
   }, [params]);
 
   useEffect(() => {
+    const action = props.room.action;
     const { type, isSuccess } = props.city.action;
     if (props.room.room && params.roomId) {
       setFields({ ...fields, ...props.room.room })
@@ -55,15 +56,19 @@ function RoomForm(props) {
   }, [props.room,props.city]);
 
   const onSubmit = (data) => {
-    if (rooomId) data.roomId = roomId;
+    if (roomId) data.roomId = roomId;
     if (roomId) {
-      props.crudActionCall(ROOOM_URL + `/${roomId}`, data, roomId ? "UPDATE" : "ADD");
+      props.crudActionCall(ROOM_URL + `/${roomId}`, data, roomId ? "UPDATE" : "ADD");
     }
     else {
       props.crudActionCall(ROOM_URL, data, roomId ? "UPDATE" : "ADD");
     }
     props.resetAction();
   }
+  const handleChange = (name,value)=>{
+    setFields((prevState) => ({ ...prevState, [name]: value }));
+
+  }  
 
   return (
     <div className="animated fadeIn">
@@ -84,7 +89,7 @@ function RoomForm(props) {
                   })}
                   fields={fields}
                 />
-                <label>Room No</label>
+                <label>No Of Room</label>
               <InputUI
                   name="roomNo"
                   errors={errors}
@@ -93,7 +98,7 @@ function RoomForm(props) {
                   })}
                   fields={fields}
                 />
-                <label>Room No</label>
+                <label>No Of Bath</label>
               <InputUI
                   name="bathNo"
                   errors={errors}
@@ -126,10 +131,11 @@ function RoomForm(props) {
                         );
                      })
                     } 
+                    
                     {roomId ? (
                   <CheckboxUI
                     type="checkbox"
-                    label="Status"
+                    label="isKitchen"
                     name="isKitchen"
                     errors={errors}
                     innerRef={register({})}
@@ -142,7 +148,7 @@ function RoomForm(props) {
                   {roomId ? (
                   <CheckboxUI
                     type="checkbox"
-                    label="Status"
+                    label="isBalkani"
                     name="isBalkani"
                     errors={errors}
                     innerRef={register({})}
@@ -154,7 +160,7 @@ function RoomForm(props) {
                 {roomId ? (
                   <CheckboxUI
                     type="checkbox"
-                    label="Status"
+                    label="isFurniture"
                     name="isFurniture"
                     errors={errors}
                     innerRef={register({})}
