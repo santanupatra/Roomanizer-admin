@@ -94,23 +94,23 @@ export default {
     //     }
     //   ]
     // },
-    // {
-    //   name: 'Manage City',
-    //   url: '/city',
-    //   icon: 'fa fa-map-marker',
-    //   children: [
-    //     {
-    //       name: 'Add',
-    //       url: '/city/add',
-    //       icon: 'fa fa-user-plus',
-    //     },
-    //     {
-    //       name: 'List',
-    //       url: '/city/list',
-    //       icon: 'fa fa-list-alt',
-    //     }
-    //   ]
-    // },
+     {
+      name: 'Manage City',
+      url: '/city',
+      icon: 'fa fa-map-marker',
+      children: [
+        {
+          name: 'Add',
+          url: '/city/add',
+          icon: 'fa fa-user-plus',
+        },
+        {
+          name: 'List',
+          url: '/city/list',
+          icon: 'fa fa-list-alt',
+        }
+      ]
+    },
     // {
     //   name: 'Manage Province',
     //   url: '/province',

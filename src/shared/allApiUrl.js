@@ -12,6 +12,6 @@ export const SETTINGS_URL = 'setting-api/setting';
 // export const SERVICE_URL = 'service-api/service'
 // export const ORDER_URL = '';
 // export const TRIP_URL = '';
-// export const CITY_URL = 'city-api/city';
+ export const CITY_URL = 'city-api/city';
 // export const PROVINCE_URL = 'province-api/province';
 // export const DASHBOARD_URL = 'dashboard-api/dashboard';

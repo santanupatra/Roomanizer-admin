@@ -9,7 +9,7 @@ import user from './user';
 import setting from './setting';
 // import food from './food';
 // import service from './service';
-// import city from './city'
+ import city from './city'
 // import province from './province'
 
 export default combineReducers({
@@ -23,7 +23,7 @@ export default combineReducers({
     // food,
     // service,
     setting,
-    // city,
+     city,
     // province,
 
 })
