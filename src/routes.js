@@ -19,9 +19,9 @@ const LandlordDetails = React.lazy(() => import('./containers/Landlord/LandlordD
 // const FoodList = React.lazy(() => import('./containers/Food/FoodList'));
 // const FoodDetails = React.lazy(() => import('./containers/Food/FoodDetails'));
 
-// const CityForm = React.lazy(() => import('./containers/City/CityForm'));
-// const CityList= React.lazy(() => import('./containers/City/CityList'));
-// const CityDetails = React.lazy(() => import('./containers/City/CityDetails'));
+const CityForm = React.lazy(() => import('./containers/City/CityForm'));
+const CityList= React.lazy(() => import('./containers/City/CityList'));
+const CityDetails = React.lazy(() => import('./containers/City/CityDetails'));
 
 // const ServiceForm = React.lazy(() => import('./containers/Service/ServiceForm'));
 // const ServiceList = React.lazy(() => import('./containers/Service/ServiceList'));
@@ -81,12 +81,12 @@ const routes = [
 //   { path: '/service/list', name: "List", component: ServiceList },
 //   { path: '/service/details/:serviceId', name: "Details", component: ServiceDetails },
 
-//  //-----------------------------Manage City------------------------------------
-//  { path: '/city', exact: true, name: "City", component: CityList },
-//  { path: '/city/add', name: "Add", component: CityForm },
-//  { path: '/city/edit/:cityId', name: "Edit", component: CityForm },
-//  { path: '/city/list', name: "List", component: CityList },
-//  { path: '/city/details/:cityId', name: "Details", component: CityDetails },
+ //-----------------------------Manage City------------------------------------
+ { path: '/city', exact: true, name: "City", component: CityList },
+ { path: '/city/add', name: "Add", component: CityForm },
+ { path: '/city/edit/:cityId', name: "Edit", component: CityForm },
+ { path: '/city/list', name: "List", component: CityList },
+ { path: '/city/details/:cityId', name: "Details", component: CityDetails },
 
 //  //-----------------------------Manage Province------------------------------------
 //  { path: '/province', exact: true, name: "Province", component: ProvinceList },
