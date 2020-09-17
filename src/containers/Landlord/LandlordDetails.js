@@ -9,19 +9,19 @@ import {
 import '../../custom.css';
 import { connect } from "react-redux";
 import { crudAction } from "../../store/actions/common";
-import { USER_URL } from '../../shared/allApiUrl';
+import { LANDLORD_URL } from '../../shared/allApiUrl';
 import { getImageUrl } from '../../shared/helpers';
 import moment from 'moment'
 
-function UserDetails(props) {
-  let userId = props.match.params.userId;
+function LandlordDetails(props) {
+  let landlordId = props.match.params.landlordId;
   // const userData = props.user.user;
-  const [userData, setUserDate] = useState(null);
+  const [landlordData, setLandlordDate] = useState(null);
 
 
   useEffect(() => {
-    props.crudActionCall(`${USER_URL}/${userId}`, null, "GET")
-    setUserDate(props.user.action.data);
+    props.crudActionCall(`${LANDLORD_URL}/${landlordId}`, null, "GET")
+    setLandlordDate(props.landlord.action.data);
 
     return () => {
 
@@ -39,13 +39,13 @@ function UserDetails(props) {
                 </CardHeader>
             <CardBody>
 
-              {props.user.action.data && (
+              {props.landlord.action.data && (
                 <ul className="list-unstyled todo-list">
                   <li>
                     <p>
                       {/* <span className="title">Profile Picture</span> */}
                       <div className="text-center" style={{ height: 150 }}>
-                      <img src={getImageUrl(props.user.action.data.profilePicture)} className="rounded-circle" style={{ height: "100%" }} alt="..." />
+                      <img src={getImageUrl(props.landlord.action.data.profilePicture)} className="rounded-circle" style={{ height: "100%" }} alt="..." />
                       {/* <img src={'assets/img/dummy-profile-img.png'} class="rounded-circle" width="200" /> */}
                       </div>
                     </p>
@@ -53,26 +53,26 @@ function UserDetails(props) {
                   <li>
                     <p>
                       <span className="title">Name</span>
-                      <span className="short-description">{`${props.user.action.data.firstName}` + ` ${props.user.action.data.lastName}`}</span>
+                      <span className="short-description">{`${props.landlord.action.data.firstName}` + ` ${props.landlord.action.data.lastName}`}</span>
                     </p>
                   </li>
 
                   <li>
                     <p>
                       <span className="title">Email Address</span>
-                      <span className="short-description">{props.user.action.data.email}</span>
+                      <span className="short-description">{props.landlord.action.data.email}</span>
                     </p>
                   </li>
                   <li>
                     <p>
                       <span className="title">Date Of Birth</span>
-                      <span className="short-description">{(props.user.action.data.dateOfBirth) ? moment(props.user.action.data.dateOfBirth).format('YYYY-MM-DD') : ''}</span>
+                      <span className="short-description">{(props.landlord.action.data.dateOfBirth) ? moment(props.landlord.action.data.dateOfBirth).format('YYYY-MM-DD') : ''}</span>
                     </p>
                   </li>
                   <li>
                     <p>
                       <span className="title">Status</span>
-                      <span className="short-description">{props.user.action.data.isActive ? "Active" : "Inactive"}</span>
+                      <span className="short-description">{props.landlord.action.data.isActive ? "Active" : "Inactive"}</span>
                     </p>
                   </li>
                   
@@ -87,16 +87,16 @@ function UserDetails(props) {
 }
 
 const mapStateToProps = state => {
-  const { user } = state;
+  const { landlord } = state;
   return {
-    user
+    landlord
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    crudActionCall: (url, data, actionType) => dispatch(crudAction(url, data, actionType, "USER"))
+    crudActionCall: (url, data, actionType) => dispatch(crudAction(url, data, actionType, "LANDLORD"))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(LandlordDetails);

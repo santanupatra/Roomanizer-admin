@@ -25,23 +25,23 @@ export default {
     },
     
 
-    // {
-    //   name: 'Manage Chef',
-    //   url: '/chef',
-    //   icon: 'fa fa-users',
-    //   children: [
-    //     {
-    //       name: 'Add',
-    //       url: '/chef/add',
-    //       icon: 'fa fa-user-plus',
-    //     },
-    //     {
-    //       name: 'List',
-    //       url: '/chef/list',
-    //       icon: 'fa fa-list-alt',
-    //     }
-    //   ]
-    // },
+    {
+      name: 'Manage Landlord',
+      url: '/landlord',
+      icon: 'fa fa-users',
+      children: [
+        {
+          name: 'Add',
+          url: '/landlord/add',
+          icon: 'fa fa-user-plus',
+        },
+        {
+          name: 'List',
+          url: '/landlord/list',
+          icon: 'fa fa-list-alt',
+        }
+      ]
+    },
 
     // {
     //   name: 'Manage CMS',

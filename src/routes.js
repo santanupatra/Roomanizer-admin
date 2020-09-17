@@ -7,9 +7,9 @@ const UserForm = React.lazy(() => import('./containers/Users/UserForm'));
 const UserList = React.lazy(() => import('./containers/Users/UserList'));
 const UserDetails = React.lazy(() => import('./containers/Users/UserDetails'));
 
-// const ChefForm = React.lazy(() => import('./containers/Chef/ChefForm'));
-// const ChefList = React.lazy(() => import('./containers/Chef/ChefList'));
-// const ChefDetails = React.lazy(() => import('./containers/Chef/ChefDetails'));
+const LandlordForm = React.lazy(() => import('./containers/Landlord/LandlordForm'));
+const LandlordList = React.lazy(() => import('./containers/Landlord/LandlordList'));
+const LandlordDetails = React.lazy(() => import('./containers/Landlord/LandlordDetails'));
 
 // const CMSForm = React.lazy(() => import('./containers/CMS/CMSForm'));
 // const CMSList = React.lazy(() => import('./containers/CMS/CMSList'));
@@ -53,12 +53,12 @@ const routes = [
   { path: '/user/list', name: "List", component: UserList },
   { path: '/user/details/:userId', name: "Details", component: UserDetails },
 
-  //------------------------------ Manage Chef --------------------------------
-//   { path: '/chef', exact: true, name: "Chef", component: ChefList },
-//   { path: '/chef/add', name: "Add", component: ChefForm },
-//   { path: '/chef/edit/:chefId', name: "Edit", component: ChefForm },
-//   { path: '/chef/list', name: "List", component: ChefList },
-//   { path: '/chef/details/:chefId', name: "Details", component: ChefDetails },
+  // ------------------------------ Manage Landlord --------------------------------
+  { path: '/landlord', exact: true, name: "Landlord", component: LandlordList },
+  { path: '/landlord/add', name: "Add", component: LandlordForm },
+  { path: '/landlord/edit/:landlordId', name: "Edit", component: LandlordForm },
+  { path: '/landlord/list', name: "List", component: LandlordList },
+  { path: '/landlord/details/:landlordId', name: "Details", component: LandlordDetails },
 
 //   //------------------------------ Manage CMS --------------------------------
 //   { path: '/cms', exact: true, name: "CMS", component: CMSList },
