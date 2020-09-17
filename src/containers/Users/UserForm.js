@@ -17,6 +17,7 @@ import InputUI from '../../UI/InputUI';
 import FileInput from "../../UI/FileInput";
 import { getImageUrl } from '../../shared/helpers';
 import { USER_URL } from '../../shared/allApiUrl';
+import { CITY_URL } from '../../shared/allApiUrl';
 import { crudAction } from '../../store/actions/common';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -56,6 +57,7 @@ function UserForm(props) {
   useEffect(() => {
     setUserId(params.userId)
     if (params.userId) props.crudActionCall(`${USER_URL}/${params.userId}`, null, "GET")
+    props.crudActionCityCall(CITY_URL, null, "GET_ALL")
   }, [params]);
 
   useEffect(() => {
@@ -214,7 +216,7 @@ function UserForm(props) {
                         </div>
                       )}
                     </PlacesAutocomplete>           
-                  {/* <Input
+                  <Input
                     type="select"
                     name="city"
                     id="city"
@@ -224,21 +226,17 @@ function UserForm(props) {
                       handlechange(e.target.name, e.target.value)
                     }
                   >
+                    <option selected disabled>Select A City....</option>
                    {
-                          
-                     props.city && props.city.cityList.map((val) =>{
-                    // languageList && languageList.map((value ,key)=>{
-                       //console.log('languageListvalue',value);
-                        return(
-                          //<option value={value._id} key={key}>{value.cityName}</option>
-                          <option>{val.cityName}</option>
-                        );
+                      props.city && props.city.cityList.map((val) =>{
+                      return(
+                        // <option value={val._id}>{val.cityName}</option>
+                        <option>{val.cityName}</option>
+                      );
                      })
                     } 
                     
-                  </Input> */}
-                
-             
+                  </Input>
                   <InputUI
                       placeholder="Zip Code"
                       type="number"
@@ -316,16 +314,18 @@ function UserForm(props) {
 }
 
 const mapStateToProps = state => {
-  const { user } = state;
+  const { user,city } = state;
   return {
-    user
+    user,
+    city
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     crudActionCall: (url, data, actionType) => dispatch(crudAction(url, data, actionType, "USER")),
-    resetAction: () => dispatch({ type: "RESET_USER_ACTION" })
+    resetAction: () => dispatch({ type: "RESET_USER_ACTION" }),
+    crudActionCityCall: (url, data, actionType) => dispatch(crudAction(url, data, actionType, "CITY"))
   }
 }
 

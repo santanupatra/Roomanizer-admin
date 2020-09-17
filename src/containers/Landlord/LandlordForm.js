@@ -17,6 +17,7 @@ import InputUI from '../../UI/InputUI';
 import FileInput from "../../UI/FileInput";
 import { getImageUrl } from '../../shared/helpers';
 import { LANDLORD_URL } from '../../shared/allApiUrl';
+import { CITY_URL } from '../../shared/allApiUrl';
 import { crudAction } from '../../store/actions/common';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -40,7 +41,7 @@ function LandlordForm(props) {
     profilePicture: null,
     city: "",
     address: "",
-    street: "",
+    // street: "",
     zipCode: null,
     password: null,
     dateOfBirth: null,
@@ -56,6 +57,7 @@ function LandlordForm(props) {
   useEffect(() => {
     setLandlordId(params.landlordId)
     if (params.landlordId) props.crudActionCall(`${LANDLORD_URL}/${params.landlordId}`, null, "GET")
+    props.crudActionCityCall(CITY_URL, null, "GET_ALL")
   }, [params]);
 
   useEffect(() => {
@@ -214,7 +216,7 @@ function LandlordForm(props) {
                         </div>
                       )}
                     </PlacesAutocomplete>           
-                  {/* <Input
+                  <Input
                     type="select"
                     name="city"
                     id="city"
@@ -224,6 +226,7 @@ function LandlordForm(props) {
                       handlechange(e.target.name, e.target.value)
                     }
                   >
+                    <option selected disabled>Select A City....</option>
                    {
                           
                      props.city && props.city.cityList.map((val) =>{
@@ -236,7 +239,7 @@ function LandlordForm(props) {
                      })
                     } 
                     
-                  </Input> */}
+                  </Input>
                 
              
                   <InputUI
@@ -316,16 +319,18 @@ function LandlordForm(props) {
 }
 
 const mapStateToProps = state => {
-  const { landlord } = state;
+  const { landlord,city } = state;
   return {
-    landlord
+    landlord,
+    city
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     crudActionCall: (url, data, actionType) => dispatch(crudAction(url, data, actionType, "LANDLORD")),
-    resetAction: () => dispatch({ type: "RESET_LANDLORD_ACTION" })
+    resetAction: () => dispatch({ type: "RESET_LANDLORD_ACTION" }),
+    crudActionCityCall: (url, data, actionType) => dispatch(crudAction(url, data, actionType, "CITY"))
   }
 }
 

@@ -71,6 +71,24 @@ function UserDetails(props) {
                   </li>
                   <li>
                     <p>
+                      <span className="title">Address</span>
+                      <span className="short-description">{props.user.action.data.address}</span>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <span className="title">City</span>
+                      <span className="short-description">{props.user.action.data.city}</span>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <span className="title">Zip Code</span>
+                      <span className="short-description">{props.user.action.data.zipCode}</span>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
                       <span className="title">Status</span>
                       <span className="short-description">{props.user.action.data.isActive ? "Active" : "Inactive"}</span>
                     </p>
