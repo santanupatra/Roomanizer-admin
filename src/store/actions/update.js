@@ -3,7 +3,7 @@ import { createBrowserHistory } from 'history';
 import { callApi } from "../../api";
 import { NotificationManager } from 'react-notifications'
 import { getMethod } from "../../shared/helpers";
-import { LOGIN_URL } from '../../shared/allApiUrl';
+import { FORGET_URL } from '../../shared/allApiUrl';
 import Axios from 'axios';
 const history = createBrowserHistory()
 
@@ -11,11 +11,11 @@ const history = createBrowserHistory()
  * login api call
  * @param {Object} data
  */
-export const login = (data) => {
+export const update = (data) => {
     console.log('login data==>', data)
 
     return async dispatch => {
-        Axios.post('http://127.0.0.1:5073/admin/admin-api/adminLogin ', data)
+        Axios.post('http://127.0.0.1:5073/admin/admin-api/forgetPassword ', data)
             .then((response) => {
                 console.log('api res', response)
                 if (response.status === 201) {
@@ -25,10 +25,6 @@ export const login = (data) => {
                 }
                 else if (response.status === 200) {
                     // set token in localStorage
-                    console.log(response)
-                    console.log(response.data)
-                    console.log(response.data.data)
-                    console.log(response.data.data.token)
                     localStorage.setItem('access-token', response.data.data.token);
                     localStorage.setItem('adminId', response.data.data.admin._id);
                     // Notification

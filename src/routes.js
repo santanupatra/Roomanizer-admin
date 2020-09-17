@@ -6,6 +6,9 @@ const ChangePass = React.lazy(() => import('./containers/Profile/ChangePassword'
 const UserForm = React.lazy(() => import('./containers/Users/UserForm'));
 const UserList = React.lazy(() => import('./containers/Users/UserList'));
 const UserDetails = React.lazy(() => import('./containers/Users/UserDetails'));
+const RoomForm = React.lazy(() => import('./containers/Room/RoomForm'));
+const RoomList = React.lazy(() => import('./containers/Room/RoomList'));
+const RoomDetails = React.lazy(() => import('./containers/Room/RoomDetails'));
 
 // const ChefForm = React.lazy(() => import('./containers/Chef/ChefForm'));
 // const ChefList = React.lazy(() => import('./containers/Chef/ChefList'));
@@ -29,7 +32,7 @@ const UserDetails = React.lazy(() => import('./containers/Users/UserDetails'));
 // const ProvinceForm = React.lazy(() => import('./containers/Province/ProvinceForm'));
 // const ProvinceList = React.lazy(() => import('./containers/Province/ProvinceList'));
 // const ProvinceDetails = React.lazy(() => import('./containers/Province/ProvinceDetails'));
-
+// const reset = React.lazy(() => import('./containers/Login/reset'));
 
 
 // const EmailForm = React.lazy(() => import('./containers/Email/EmailForm'));
@@ -52,8 +55,14 @@ const routes = [
   { path: '/user/edit/:userId', name: "Edit", component: UserForm },
   { path: '/user/list', name: "List", component: UserList },
   { path: '/user/details/:userId', name: "Details", component: UserDetails },
-
-  //------------------------------ Manage Chef --------------------------------
+  //------------------------------ Manage Room --------------------------------
+  { path: '/room', exact: true, name: "Rooms", component: RoomList },
+  { path: '/room/add', name: "Add", component: RoomForm },
+  { path: '/room/edit/:roomId', name: "Edit", component: RoomForm },
+  { path: '/room/list', name: "List", component: RoomList },
+  { path: '/room/details/:roomId', name: "Details", component: RoomDetails },
+  //------------------------------ reset --------------------------------
+  // { path: '/reset', name: 'reset', component: reset },
 //   { path: '/chef', exact: true, name: "Chef", component: ChefList },
 //   { path: '/chef/add', name: "Add", component: ChefForm },
 //   { path: '/chef/edit/:chefId', name: "Edit", component: ChefForm },

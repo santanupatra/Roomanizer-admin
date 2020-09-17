@@ -1,11 +1,16 @@
 export const LOGIN_URL = 'admin-api/adminLogin';
+export const FORGET_PASSWORD_URL = "/admin-api/admin/forgotPassword";
+export const SET_PASSWORD_URL = "/admin-api/admin/updatePassword";
+// export const FORGET_URL = 'admin-api/admin/forgetPassord';
 export const LOGOUT_URL = '';
 export const PROFILE_URL = 'admin-api/admin';
 export const USER_URL = 'user-api/user';
+export const ROOM_API = 'room-api/room';
 // export const CHEF_URL = 'chef-api/chef';
 export const UNIVERSITY_URL = '';
 export const CHANGE_PASSWORD_URL = 'admin-api/admin/change-password';
 export const SETTINGS_URL = 'setting-api/setting';
+// export const FORGOT_URL='admin-api/admin/forgetPassword'
 // export const CMS_URL = 'cms-api/cms';
 // export const FOOD_URL = 'food-api/food-category'
 // export const EMAIL_URL = 'email-api/email';
