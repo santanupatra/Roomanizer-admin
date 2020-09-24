@@ -42,24 +42,40 @@ export default {
         }
       ]
     },
-
-    // {
-    //   name: 'Manage CMS',
-    //   url: '/cms',
-    //   icon: 'fa fa-cog',
-    //   children: [
-    //     {
-    //       name: 'Add',
-    //       url: '/cms/add',
-    //       icon: 'fa fa-user-plus',
-    //     },
-    //     {
-    //       name: 'List',
-    //       url: '/cms/list',
-    //       icon: 'fa fa-list-alt',
-    //     }
-    //   ]
-    // },
+    {
+      name: 'Manage Room',
+      url: '/room',
+      icon: 'fa fa-users',
+      children: [
+        {
+          name: 'Add',
+          url: '/room/add',
+          icon: 'fa fa-user-plus',
+        },
+        {
+          name: 'List',
+          url: '/room/list',
+          icon: 'fa fa-list-alt',
+        }
+      ]
+    },
+    {
+      name: 'Manage CMS',
+      url: '/cms',
+      icon: 'fa fa-cog',
+      children: [
+        {
+          name: 'Add',
+          url: '/cms/add',
+          icon: 'fa fa-user-plus',
+        },
+        {
+          name: 'List',
+          url: '/cms/list',
+          icon: 'fa fa-list-alt',
+        }
+      ]
+    },
     // {
     //   name: 'Manage Food Category',
     //   url: '/food',
@@ -128,23 +144,23 @@ export default {
     //     }
     //   ]
     // },
-    // {
-    //   name: 'Email Template',
-    //   url: '/email',
-    //   icon: 'fa fa-envelope',
-    //   children: [
-    //     {
-    //       name: 'Add',
-    //       url: '/email/add',
-    //       icon: 'fa fa-user-plus',
-    //     },
-    //     {
-    //       name: 'List',
-    //       url: '/email/list',
-    //       icon: 'fa fa-list-alt',
-    //     }
-    //   ]
-    // },
+    {
+      name: 'Email Template',
+      url: '/email',
+      icon: 'fa fa-envelope',
+      children: [
+        {
+          name: 'Add',
+          url: '/email/add',
+          icon: 'fa fa-user-plus',
+        },
+        {
+          name: 'List',
+          url: '/email/list',
+          icon: 'fa fa-list-alt',
+        }
+      ]
+    },
     {
       name: 'Manage Setting',
       url: '/setting',

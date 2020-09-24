@@ -3,9 +3,11 @@ import auth from "./auth";
 import dashboard from './dashboard';
 import profile from "./profile";
 import user from './user';
+import room from './room';
+// import chef from './chef';
 import landlord from './landlord';
-// import cms from './cms';
-// import email from './email';
+import email from './email';
+import cms from './cms';
 import setting from './setting';
 // import food from './food';
 // import service from './service';
@@ -17,9 +19,11 @@ export default combineReducers({
     dashboard,
     profile,
     user,
+    room,
+    // chef,
     landlord,
-    // email,
-    // cms,
+    email,
+    cms,
     // food,
     // service,
     setting,
