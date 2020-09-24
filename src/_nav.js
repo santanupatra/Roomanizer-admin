@@ -144,23 +144,23 @@ export default {
     //     }
     //   ]
     // },
-    // {
-    //   name: 'Email Template',
-    //   url: '/email',
-    //   icon: 'fa fa-envelope',
-    //   children: [
-    //     {
-    //       name: 'Add',
-    //       url: '/email/add',
-    //       icon: 'fa fa-user-plus',
-    //     },
-    //     {
-    //       name: 'List',
-    //       url: '/email/list',
-    //       icon: 'fa fa-list-alt',
-    //     }
-    //   ]
-    // },
+    {
+      name: 'Email Template',
+      url: '/email',
+      icon: 'fa fa-envelope',
+      children: [
+        {
+          name: 'Add',
+          url: '/email/add',
+          icon: 'fa fa-user-plus',
+        },
+        {
+          name: 'List',
+          url: '/email/list',
+          icon: 'fa fa-list-alt',
+        }
+      ]
+    },
     {
       name: 'Manage Setting',
       url: '/setting',
