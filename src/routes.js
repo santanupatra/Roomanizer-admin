@@ -6,14 +6,17 @@ const ChangePass = React.lazy(() => import('./containers/Profile/ChangePassword'
 const UserForm = React.lazy(() => import('./containers/Users/UserForm'));
 const UserList = React.lazy(() => import('./containers/Users/UserList'));
 const UserDetails = React.lazy(() => import('./containers/Users/UserDetails'));
+const RoomForm = React.lazy(() => import('./containers/Room/RoomForm'));
+const RoomList = React.lazy(() => import('./containers/Room/RoomList'));
+const RoomDetails = React.lazy(() => import('./containers/Room/RoomDetails'));
 
 const LandlordForm = React.lazy(() => import('./containers/Landlord/LandlordForm'));
 const LandlordList = React.lazy(() => import('./containers/Landlord/LandlordList'));
 const LandlordDetails = React.lazy(() => import('./containers/Landlord/LandlordDetails'));
 
-// const CMSForm = React.lazy(() => import('./containers/CMS/CMSForm'));
-// const CMSList = React.lazy(() => import('./containers/CMS/CMSList'));
-// const CMSDetails = React.lazy(() => import('./containers/CMS/CMSDetails'));
+const CMSForm = React.lazy(() => import('./containers/CMS/CMSForm'));
+const CMSList = React.lazy(() => import('./containers/CMS/CMSList'));
+const CMSDetails = React.lazy(() => import('./containers/CMS/CMSDetails'));
 
 // const FoodForm = React.lazy(() => import('./containers/Food/FoodForm'));
 // const FoodList = React.lazy(() => import('./containers/Food/FoodList'));
@@ -29,7 +32,7 @@ const CityDetails = React.lazy(() => import('./containers/City/CityDetails'));
 // const ProvinceForm = React.lazy(() => import('./containers/Province/ProvinceForm'));
 // const ProvinceList = React.lazy(() => import('./containers/Province/ProvinceList'));
 // const ProvinceDetails = React.lazy(() => import('./containers/Province/ProvinceDetails'));
-
+// const reset = React.lazy(() => import('./containers/Login/reset'));
 
 
 const EmailForm = React.lazy(() => import('./containers/Email/EmailForm'));
@@ -52,6 +55,19 @@ const routes = [
   { path: '/user/edit/:userId', name: "Edit", component: UserForm },
   { path: '/user/list', name: "List", component: UserList },
   { path: '/user/details/:userId', name: "Details", component: UserDetails },
+  //------------------------------ Manage Room --------------------------------
+  { path: '/room', exact: true, name: "Rooms", component: RoomList },
+  { path: '/room/add', name: "Add", component: RoomForm },
+  { path: '/room/edit/:roomId', name: "Edit", component: RoomForm },
+  { path: '/room/list', name: "List", component: RoomList },
+  { path: '/room/details/:roomId', name: "Details", component: RoomDetails },
+  //------------------------------ reset --------------------------------
+  // { path: '/reset', name: 'reset', component: reset },
+//   { path: '/chef', exact: true, name: "Chef", component: ChefList },
+//   { path: '/chef/add', name: "Add", component: ChefForm },
+//   { path: '/chef/edit/:chefId', name: "Edit", component: ChefForm },
+//   { path: '/chef/list', name: "List", component: ChefList },
+//   { path: '/chef/details/:chefId', name: "Details", component: ChefDetails },
 
   // ------------------------------ Manage Landlord --------------------------------
   { path: '/landlord', exact: true, name: "Landlord", component: LandlordList },
@@ -60,12 +76,12 @@ const routes = [
   { path: '/landlord/list', name: "List", component: LandlordList },
   { path: '/landlord/details/:landlordId', name: "Details", component: LandlordDetails },
 
-//   //------------------------------ Manage CMS --------------------------------
-//   { path: '/cms', exact: true, name: "CMS", component: CMSList },
-//   { path: '/cms/add', name: "Add", component: CMSForm },
-//   { path: '/cms/edit/:cmsId', name: "Edit", component: CMSForm },
-//   { path: '/cms/list', name: "List", component: CMSList },
-//   { path: '/cms/details/:cmsId', name: "Details", component: CMSDetails },
+  //------------------------------ Manage CMS --------------------------------
+  { path: '/cms', exact: true, name: "CMS", component: CMSList },
+  { path: '/cms/add', name: "Add", component: CMSForm },
+  { path: '/cms/edit/:cmsId', name: "Edit", component: CMSForm },
+  { path: '/cms/list', name: "List", component: CMSList },
+  { path: '/cms/details/:cmsId', name: "Details", component: CMSDetails },
 
 // //------------------------------ Manage Food --------------------------------
 //   { path: '/food', exact: true, name: "Food", component: FoodList },

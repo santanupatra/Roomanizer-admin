@@ -1,25 +1,41 @@
-import React, { useEffect } from 'react';
-import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import React, { useEffect } from "react";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardGroup,
+  Col,
+  Container,
+  Form,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  Row,
+} from "reactstrap";
 import { connect } from "react-redux";
-import { login } from '../../store/actions/auth';
+import { login } from "../../store/actions/auth";
 import { useForm } from "react-hook-form";
 import { getAuthToken } from "../../shared/helpers";
 
 function Login(props) {
-  const { handleSubmit, register, errors } = useForm();
+  const { handleSubmit, register } = useForm();
+
   const onSubmit = (data) => {
     props.loginApiCall(data);
-
-  }
+  };
 
   useEffect(() => {
     if (props.auth.isAuthenticated && getAuthToken !== "")
       props.history.push("/dashboard");
     return () => {
       // cleanup
-    }
+    };
   }, [props.auth]);
 
+  const handleForget = e => {
+    props.history.push("/forget-password")
+  }
 
   return (
     <div className="app flex-row align-items-center">
@@ -59,24 +75,29 @@ function Login(props) {
                         placeholder="Password"
                         autoComplete="current-password"
                         innerRef={register}
-                        required />
+                        required
+                      />
                     </InputGroup>
                     <Row>
                       <Col xs="6">
-                        <Button
-                          type="submit"
-                          color="primary"
-                          className="px-4"
-
-                        >
+                        <Button type="submit" color="primary" className="px-4">
                           Login
-                          </Button>
+                        </Button>
                       </Col>
-                      <Col xs="6" className="text-right">
-                        <Button color="link" className="px-0">Forgot password?</Button>
-                      </Col>
+                      {/* <Col xs="6" className="text-right">
+                        <Button color="link" className="px-0">
+                          Forgot password?
+                        </Button>
+                      </Col> */}
                     </Row>
                   </Form>
+                  <Row>
+                    <Col xs="12" className="text-right">
+                      <Button color="link" className="px-0" onClick={e => handleForget(e)}>
+                        Forgot password?
+                      </Button>
+                    </Col>
+                  </Row>
                 </CardBody>
               </Card>
             </CardGroup>
@@ -86,18 +107,15 @@ function Login(props) {
     </div>
   );
 }
-
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const { auth } = state;
   return {
-    auth: auth
-  }
-}
-
-const mapDispatchToProps = dispatch => {
+    auth: auth,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
   return {
-    loginApiCall: (data) => dispatch(login(data))
-  }
-}
-
+    loginApiCall: (data) => dispatch(login(data)),
+  };
+};
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
