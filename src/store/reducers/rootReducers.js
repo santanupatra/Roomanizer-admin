@@ -5,7 +5,7 @@ import profile from "./profile";
 import user from './user';
 import landlord from './landlord';
 // import cms from './cms';
-// import email from './email';
+import email from './email';
 import setting from './setting';
 // import food from './food';
 // import service from './service';
@@ -18,7 +18,7 @@ export default combineReducers({
     profile,
     user,
     landlord,
-    // email,
+    email,
     // cms,
     // food,
     // service,

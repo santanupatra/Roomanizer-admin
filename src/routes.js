@@ -32,9 +32,9 @@ const CityDetails = React.lazy(() => import('./containers/City/CityDetails'));
 
 
 
-// const EmailForm = React.lazy(() => import('./containers/Email/EmailForm'));
-// const EmailList = React.lazy(() => import('./containers/Email/EmailList'));
-// const EmailDetails = React.lazy(() => import('./containers/Email/EmailDetails'));
+const EmailForm = React.lazy(() => import('./containers/Email/EmailForm'));
+const EmailList = React.lazy(() => import('./containers/Email/EmailList'));
+const EmailDetails = React.lazy(() => import('./containers/Email/EmailDetails'));
 
 const SettingForm = React.lazy(() => import('./containers/Setting/SettingForm'));
 
@@ -96,11 +96,11 @@ const routes = [
 //  { path: '/province/details/:provinceId', name: "Details", component: ProvinceDetails },
   
 //   //------------------------------ Manage Email --------------------------------
-//   { path: '/email', exact: true, name: "Email", component: EmailList },
-//   { path: '/email/add', name: "Add", component: EmailForm },
-//   { path: '/email/edit/:emailId', name: "Edit", component: EmailForm },
-//   { path: '/email/list', name: "List", component: EmailList },
-//   { path: '/email/details/:emailId', name: "Details", component: EmailDetails },
+  { path: '/email', exact: true, name: "Email", component: EmailList },
+  { path: '/email/add', name: "Add", component: EmailForm },
+  { path: '/email/edit/:emailId', name: "Edit", component: EmailForm },
+  { path: '/email/list', name: "List", component: EmailList },
+  { path: '/email/details/:emailId', name: "Details", component: EmailDetails },
 
   //------------------------------ Manage Setting --------------------------------
   { path: '/setting', exact: true, name: "Setting", component: SettingForm },
