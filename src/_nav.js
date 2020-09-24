@@ -59,23 +59,23 @@ export default {
         }
       ]
     },
-    // {
-    //   name: 'Manage CMS',
-    //   url: '/cms',
-    //   icon: 'fa fa-cog',
-    //   children: [
-    //     {
-    //       name: 'Add',
-    //       url: '/cms/add',
-    //       icon: 'fa fa-user-plus',
-    //     },
-    //     {
-    //       name: 'List',
-    //       url: '/cms/list',
-    //       icon: 'fa fa-list-alt',
-    //     }
-    //   ]
-    // },
+    {
+      name: 'Manage CMS',
+      url: '/cms',
+      icon: 'fa fa-cog',
+      children: [
+        {
+          name: 'Add',
+          url: '/cms/add',
+          icon: 'fa fa-user-plus',
+        },
+        {
+          name: 'List',
+          url: '/cms/list',
+          icon: 'fa fa-list-alt',
+        }
+      ]
+    },
     // {
     //   name: 'Manage Food Category',
     //   url: '/food',

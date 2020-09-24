@@ -14,9 +14,9 @@ const LandlordForm = React.lazy(() => import('./containers/Landlord/LandlordForm
 const LandlordList = React.lazy(() => import('./containers/Landlord/LandlordList'));
 const LandlordDetails = React.lazy(() => import('./containers/Landlord/LandlordDetails'));
 
-// const CMSForm = React.lazy(() => import('./containers/CMS/CMSForm'));
-// const CMSList = React.lazy(() => import('./containers/CMS/CMSList'));
-// const CMSDetails = React.lazy(() => import('./containers/CMS/CMSDetails'));
+const CMSForm = React.lazy(() => import('./containers/CMS/CMSForm'));
+const CMSList = React.lazy(() => import('./containers/CMS/CMSList'));
+const CMSDetails = React.lazy(() => import('./containers/CMS/CMSDetails'));
 
 // const FoodForm = React.lazy(() => import('./containers/Food/FoodForm'));
 // const FoodList = React.lazy(() => import('./containers/Food/FoodList'));
@@ -76,12 +76,12 @@ const routes = [
   { path: '/landlord/list', name: "List", component: LandlordList },
   { path: '/landlord/details/:landlordId', name: "Details", component: LandlordDetails },
 
-//   //------------------------------ Manage CMS --------------------------------
-//   { path: '/cms', exact: true, name: "CMS", component: CMSList },
-//   { path: '/cms/add', name: "Add", component: CMSForm },
-//   { path: '/cms/edit/:cmsId', name: "Edit", component: CMSForm },
-//   { path: '/cms/list', name: "List", component: CMSList },
-//   { path: '/cms/details/:cmsId', name: "Details", component: CMSDetails },
+  //------------------------------ Manage CMS --------------------------------
+  { path: '/cms', exact: true, name: "CMS", component: CMSList },
+  { path: '/cms/add', name: "Add", component: CMSForm },
+  { path: '/cms/edit/:cmsId', name: "Edit", component: CMSForm },
+  { path: '/cms/list', name: "List", component: CMSList },
+  { path: '/cms/details/:cmsId', name: "Details", component: CMSDetails },
 
 // //------------------------------ Manage Food --------------------------------
 //   { path: '/food', exact: true, name: "Food", component: FoodList },

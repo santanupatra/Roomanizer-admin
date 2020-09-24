@@ -6,7 +6,7 @@ import user from './user';
 import room from './room';
 // import chef from './chef';
 import landlord from './landlord';
-// import cms from './cms';
+import cms from './cms';
 // import email from './email';
 import setting from './setting';
 // import food from './food';
@@ -23,7 +23,7 @@ export default combineReducers({
     // chef,
     landlord,
     // email,
-    // cms,
+    cms,
     // food,
     // service,
     setting,
