@@ -6,6 +6,7 @@ export const LOGOUT_URL = '';
 export const PROFILE_URL = 'admin-api/admin';
 export const USER_URL = 'user-api/user';
 export const ROOM_URL = 'room-api/room';
+export const CONTACT_URL='contact-api/contact'
 // export const CHEF_URL = 'chef-api/chef';
 export const LANDLORD_URL = 'landlord-api/landlord';
 export const UNIVERSITY_URL = '';
