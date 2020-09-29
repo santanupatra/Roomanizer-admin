@@ -9,6 +9,7 @@ import landlord from './landlord';
 import email from './email';
 import cms from './cms';
 import setting from './setting';
+import contact from './contact';
 // import food from './food';
 // import service from './service';
  import city from './city'
@@ -27,6 +28,7 @@ export default combineReducers({
     // food,
     // service,
     setting,
+    contact,
      city,
     // province,
 

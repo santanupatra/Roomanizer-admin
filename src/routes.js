@@ -9,6 +9,7 @@ const UserDetails = React.lazy(() => import('./containers/Users/UserDetails'));
 const RoomForm = React.lazy(() => import('./containers/Room/RoomForm'));
 const RoomList = React.lazy(() => import('./containers/Room/RoomList'));
 const RoomDetails = React.lazy(() => import('./containers/Room/RoomDetails'));
+const ContactList = React.lazy(() => import('./containers/Contact/ContactUs'));
 
 const LandlordForm = React.lazy(() => import('./containers/Landlord/LandlordForm'));
 const LandlordList = React.lazy(() => import('./containers/Landlord/LandlordList'));
@@ -62,6 +63,10 @@ const routes = [
   { path: '/room/list', name: "List", component: RoomList },
   { path: '/room/details/:roomId', name: "Details", component: RoomDetails },
   //------------------------------ reset --------------------------------
+  { path: '/contact', exact: true, name: "Contacts", component: ContactList },
+
+  { path: '/contact/list', name: "List", component: ContactList },
+
   // { path: '/reset', name: 'reset', component: reset },
 //   { path: '/chef', exact: true, name: "Chef", component: ChefList },
 //   { path: '/chef/add', name: "Add", component: ChefForm },

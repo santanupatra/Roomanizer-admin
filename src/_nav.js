@@ -76,6 +76,18 @@ export default {
         }
       ]
     },
+    {
+      name: 'Contact Us',
+      url: '/contact',
+      icon: 'fa fa-cog',
+      children: [
+        {
+          name: 'List',
+          url: '/contact/list',
+          icon: 'fa fa-list-alt',
+        }
+      ]
+    },
     // {
     //   name: 'Manage Food Category',
     //   url: '/food',
