@@ -150,9 +150,9 @@ function SettingForm(props) {
                   })}
                   fields={fields}
                 />
-                {/* Pinterest Url */}
+                {/* LinkedIn Url */}
                 <InputUI
-                  label="Pinterest Url"
+                  label="LinkedIn Url"
                   name="pinterestUrl"
                   errors={errors}
                   innerRef={register({

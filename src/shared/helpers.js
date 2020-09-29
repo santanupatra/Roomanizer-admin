@@ -1,5 +1,5 @@
-// export const apiBaseUrl = `http://111.93.169.90:7082`;
-export const apiBaseUrl = `http://127.0.0.1:5073`;
+export const apiBaseUrl = `http://111.93.169.90:7082`;
+// export const apiBaseUrl = `http://127.0.0.1:5073`;
 export const updateObject = (oldObj, newObj) => {
     console.log({ ...oldObj, ...newObj })
     return { ...oldObj, ...newObj };
