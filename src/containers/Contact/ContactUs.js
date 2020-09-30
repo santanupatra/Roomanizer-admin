@@ -7,18 +7,20 @@ import { getImageUrl } from '../../shared/helpers';
 import { withRouter } from 'react-router-dom';
 import moment from 'moment'
 function ContactList(props) {
-
-    const getContactList = () => {
+//   const onClick=()=>{
+//         window.location.href = `mailto:${props.contact.contactList[0].email}`;
+//     }
+    const getCityList = () => {
         console.log(props)
         props.crudActionCall(CONTACT_URL, null, "GET_ALL")
     }
 
-    useEffect(() => {
-        getContactList();
-        return () => {
-            // cleanup
-        }
-    }, []);
+     useEffect(() => {
+         getCityList();
+         return () => {
+             // cleanup
+         }
+     }, []);
     return (
         <div>
             <Row>
@@ -48,7 +50,14 @@ function ContactList(props) {
                                                     <td  className="text-center">{val.name}</td>
                                                     <td  className="text-center">{val.email}</td>
                                                     <td  className="text-center">{val.subject}</td>
-                                                    <td  className="text-center"> <a href="#" id="mailbutton" class="btn btn-primary">Send us a mail!</a></td>
+                                                    <td  className="text-center">
+                                                        
+                                                    {/* <a  class="btn btn-primay" href={`mailto:${val.email}`}>EmailButton</a> */}
+                                                        <buttonr class="btn btn-primay">
+                                                        <a  class="btn btn-primay" href={`mailto:${val.email}`}>EmailButton</a>
+                                                        </buttonr>
+                                                         {/* <a href="#" id="mailbutton" onClick={this.onClick} class="btn btn-primary">Send us a mail!</a> */}
+                                                         </td>
                                                 </tr>
                                             );
                                         })
