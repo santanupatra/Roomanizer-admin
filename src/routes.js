@@ -27,6 +27,14 @@ const CityForm = React.lazy(() => import('./containers/City/CityForm'));
 const CityList= React.lazy(() => import('./containers/City/CityList'));
 const CityDetails = React.lazy(() => import('./containers/City/CityDetails'));
 
+const HouseForm = React.lazy(() => import('./containers/House/HouseForm'));
+const HouseList= React.lazy(() => import('./containers/House/HouseList'));
+const HouseDetails = React.lazy(() => import('./containers/House/HouseDetails'));
+
+
+const AnimitiesForm = React.lazy(() => import('./containers/Animities/AnimitiesForm'));
+const AnimitiesList= React.lazy(() => import('./containers/Animities/AnimitiesList'));
+const AnimitiesDetails = React.lazy(() => import('./containers/Animities/AnimitiesDetails'));
 // const ServiceForm = React.lazy(() => import('./containers/Service/ServiceForm'));
 // const ServiceList = React.lazy(() => import('./containers/Service/ServiceList'));
 // const ServiceDetails = React.lazy(() => import('./containers/Service/ServiceDetails'));
@@ -109,6 +117,19 @@ const routes = [
  { path: '/city/list', name: "List", component: CityList },
  { path: '/city/details/:cityId', name: "Details", component: CityDetails },
 
+  //-----------------------------House Rule------------------------------------
+  { path: '/house', exact: true, name: "House", component: HouseList },
+  { path: '/house/add', name: "Add", component: HouseForm },
+  { path: '/house/edit/:houseId', name: "Edit", component: HouseForm },
+  { path: '/house/list', name: "List", component: HouseList },
+  { path: '/house/details/:houseId', name: "Details", component: HouseDetails },
+
+    //-----------------------------Animities------------------------------------
+    { path: '/animities', exact: true, name: "Animities", component: AnimitiesList },
+    { path: '/animities/add', name: "Add", component: AnimitiesForm },
+    { path: '/animities/edit/: animitiesId', name: "Edit", component: AnimitiesForm },
+    { path: '/animities/list', name: "List", component: AnimitiesList },
+    { path: '/animities/details/: animitiesId', name: "Details", component: AnimitiesDetails },
 //  //-----------------------------Manage Province------------------------------------
 //  { path: '/province', exact: true, name: "Province", component: ProvinceList },
 //  { path: '/province/add', name: "Add", component: ProvinceForm },
