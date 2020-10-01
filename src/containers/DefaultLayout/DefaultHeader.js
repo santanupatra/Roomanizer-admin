@@ -8,6 +8,7 @@ import { AppAsideToggler, AppNavbarBrand, AppSidebarToggler } from '@coreui/reac
 import logo from '../../assets/img/brand/abc-chef-logo.png'
 import sygnet from '../../assets/img/brand/sygnet.svg'
 import { PROFILE_URL } from "../../shared/allApiUrl";
+import {SETTINGS_URL} from "../../shared/allApiUrl"
 import { getAuthUserId, getImageUrl } from '../../shared/helpers';
 import { connect } from "react-redux";
 import { crudAction } from "../../store/actions/common";
@@ -19,38 +20,65 @@ const propTypes = {
 const defaultProps = {};
 
 const DefaultHeader = props => { {
+  console.log(props.profile)
   const initialFields = {
     name: "",
     email: "",
     profilePicture: null
   }
   const [fields, setFields] = useState(initialFields);
+  const [settingId, setSettingId] = useState(null);
+  const [photo, setPhoto] = useState(null);
     const { children, ...attributes } = props;
+  // const params = props.match.params;
+
+  useEffect(() => {
+    console.log('profile', getAuthUserId, PROFILE_URL);
+    props.crudActionCall(`${PROFILE_URL}/${getAuthUserId}`, null, "GET")
+    return () => {
+      // cleanup
+    }
+  }, []);
+
+    
+
 
     useEffect(() => {
-      props.crudActionCall(`${PROFILE_URL}/${props.auth.adminId?props.auth.adminId:getAuthUserId}`, null, "GET")
-      return () => {
-        // cleanup
-      }
-    }, [props.profile.action.type])
+      
+      props.crudActionCallsetting(`${SETTINGS_URL}`, null, "GET")
+    }, []);
+  
     useEffect(() => {
-      console.log(props.profile.profile)
-      if (props.profile.profile) {
-        setFields({...fields,...props.profile.profile})
+      const action = props.setting.action;
+  
+      if (props.setting.setting) {
+        console.log(props.setting.setting.siteLogo)
+        setPhoto(props.setting.setting.siteLogo );
+        setSettingId(props.setting.setting._id);
+       
       }
+      
+  
+    }, [props.setting]);
+    useEffect(() => {
+
+      console.log(props.profile)
+      // if (props.profile.profile) {
+      //   setFields({ ...fields, ...props.profile.profile })
+      // }
   
     }, [props.profile]);
-console.log("from header===>>>",props.auth);
+// console.log("from header===>>>",props.auth);
     return (
       <React.Fragment>
         <AppSidebarToggler className="d-lg-none" display="md" mobile />
         <AppNavbarBrand
-          full={{ src: logo, width: 89, height: 25, alt: 'CoreUI Logo' }}
+          full={{ src:getImageUrl(photo), width: 89, height: 25, alt: 'CoreUI Logo' }}
           minimized={{ src: sygnet, width: 30, height: 30, alt: 'CoreUI Logo' }}
         />
         <AppSidebarToggler className="d-md-down-none" display="lg" />
         
-        <Nav className="ml-auto" navbar>
+        <Nav className="ml-auto" navbar> 
           <UncontrolledDropdown nav direction="down">
             <DropdownToggle nav>
               <img src={getImageUrl(fields.profilePicture)} className="img-avatar" alt="admin" />
@@ -73,15 +101,17 @@ DefaultHeader.propTypes = propTypes;
 DefaultHeader.defaultProps = defaultProps;
 
 const mapStateToProps = state => {
-  const { profile, auth } = state;
+  const { profile, auth,setting } = state;
   return {
     profile,
-    auth
+    auth,
+    setting
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
-    crudActionCall: (url, data, actionType) => dispatch(crudAction(url, data, actionType, "PROFILE"))
+    crudActionCall: (url, data, actionType) => dispatch(crudAction(url, data, actionType, "PROFILE")),
+    crudActionCallsetting: (url, data, actionType) => dispatch(crudAction(url, data, actionType, "SETTING"))
   }
 }
 
