@@ -15,7 +15,7 @@ export const callApi = (url, method, data) => {
             method: method.toUpperCase(),
             ...dataObj
         }).then(response => {
-
+            console.log(response)
             if (response.status === 200) {
                 resolve(response.data.data);
             }
