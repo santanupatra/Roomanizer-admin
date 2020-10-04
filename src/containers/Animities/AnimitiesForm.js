@@ -11,14 +11,14 @@ import {
   Row,
 } from 'reactstrap';
 import InputUI from '../../UI/InputUI';
-import { ANIMITIES_URL } from '../../shared/allApiUrl';
+import { AMINITIES_URL } from '../../shared/allApiUrl';
 import { crudAction } from '../../store/actions/common';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 // import * as Action from './Action';
 import { bindActionCreators } from 'redux';
 
-function AnimitiesForm(props) {
+function AminitiesForm(props) {
 
   const initialFields = {
     name: "",
@@ -26,37 +26,37 @@ function AnimitiesForm(props) {
   }
 
   const [fields, setFields] = useState(initialFields);
-  const [animitiesId, setHouseId] = useState(null);
+  const [aminitiesId, setHouseId] = useState(null);
   const { handleSubmit, register, errors } = useForm();
   const params = props.match.params;
 
   useEffect(() => {
-    setHouseId(params.animitiesId)
-    if (params.animitiesId) props.crudActionCall(`${ANIMITIES_URL}/${params.animitiesId}`, null, "GET")
+    setHouseId(params.aminitiesId)
+    if (params.aminitiesId) props.crudActionCall(`${AMINITIES_URL}/${params.aminitiesId}`, null, "GET")
   }, [params]);
 
   useEffect(() => {
-    const action = props.animities.action;
-    if (props. animities. animities && params.animitiesId) {
+    const action = props.aminities.action;
+    if (props. aminities. aminities && params.aminitiesId) {
       setFields({ ...fields, ...props.animities.animities });
     }
     if (action.isSuccess && action.type === "ADD" || action.type === "UPDATE")
-      props.history.push("/animities/list")
+      props.history.push("/aminities/list")
 
-  }, [props.animities]);
+  }, [props.aminities]);
 
   //const pagecontentHandler = (e) => {
     //setCityContent(e.editor.getData())
   //}
 
   const onSubmit = (data) => {
-    if (animitiesId) data.animitiesId = animitiesId;
+    if (aminitiesId) data.aminitiesId = aminitiesId;
     //data.cityContent = cityContent;
-    if (animitiesId) {
-      props.crudActionCall(ANIMITIES_URL + `/${animitiesId}`, data, animitiesId ? "UPDATE" : "ADD");
+    if (aminitiesId) {
+      props.crudActionCall(AMINITIES_URL + `/${aminitiesId}`, data, aminitiesId ? "UPDATE" : "ADD");
     }
     else {
-      props.crudActionCall(ANIMITIES_URL, data,animitiesId ? "UPDATE" : "ADD");
+      props.crudActionCall(AMINITIES_URL, data,aminitiesId ? "UPDATE" : "ADD");
     }
     props.resetAction();
   }
@@ -67,13 +67,13 @@ function AnimitiesForm(props) {
         <Col xs="12">
           <Card>
             <CardHeader>
-              <i className="fa fa-edit"></i>{animitiesId ? ` Animities Update` : ` Animities Add`}
+              <i className="fa fa-edit"></i>{aminitiesId ? ` Aminities Update` : ` Aminities Add`}
             </CardHeader>
             <Form className="form-horizontal" onSubmit={handleSubmit(onSubmit)}>
               <CardBody>
                 {/* Page Title */}
                 <InputUI
-                  label="Animities Name"
+                  label="Aminities Name"
                   name="name"
                   errors={errors}
                   innerRef={register({
@@ -111,17 +111,17 @@ function AnimitiesForm(props) {
 }
 
 const mapStateToProps = state => {
-  const { animities } = state;
+  const { aminities } = state;
   return {
-    animities
+    aminities
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    crudActionCall: (url, data, actionType) => dispatch(crudAction(url, data, actionType, "ANIMITIES")),
-    resetAction: () => dispatch({ type: "RESET_ANIMITIES_ACTION" })
+    crudActionCall: (url, data, actionType) => dispatch(crudAction(url, data, actionType, "AMINITIES")),
+    resetAction: () => dispatch({ type: "RESET_AMINITIES_ACTION" })
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AnimitiesForm));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AminitiesForm));

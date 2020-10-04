@@ -9,17 +9,17 @@ import {
 import '../../custom.css';
 import { connect } from "react-redux";
 import { crudAction } from "../../store/actions/common";
-import { ANIMITIES_URL } from '../../shared/allApiUrl';
+import { AMINITIES_URL } from '../../shared/allApiUrl';
 //import moment from 'moment';
 //import CKEditor from 'ckeditor4-react'
 
 function AnimitiesDetails(props) {
-  let animitiesId = props.match.params.animitiesId;
+  const aminitiesId = props.match.params.aminitiesId;
   // const userData = props.user.user;
 
   useEffect(() => {
 
-    props.crudActionCall(`${ANIMITIES_URL}/${animitiesId}`, null, "GET")
+    props.crudActionCall(`${AMINITIES_URL}/${aminitiesId}`, null, "GET")
     // let viewData = props.cms.cmsList.filter(f => f._id === parseInt(cmsId));
     // setCmsDate(viewData);
 
@@ -39,11 +39,11 @@ function AnimitiesDetails(props) {
               <i classNameName="fa fa-edit"></i>Animities Name
                 </CardHeader>
             <CardBody>
-              {(animitiesId && props.animities.animities) && (
+              {(aminitiesId && props.aminities.aminities) && (
                 <div
                   contenteditable
                   dangerouslySetInnerHTML={{
-                    __html: props.animities.animities.name
+                    __html: props.aminities.aminities.name
                   }}
                 >
                 </div>
@@ -58,16 +58,16 @@ function AnimitiesDetails(props) {
 }
 
 const mapStateToProps = state => {
-  const { animities } = state;
-  console.log('House', animities)
+  const { aminities } = state;
+  console.log('House', aminities)
   return {
-    animities
+    aminities
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    crudActionCall: (url, data, actionType) => dispatch(crudAction(url, data, actionType, "ANIMITIES"))
+    crudActionCall: (url, data, actionType) => dispatch(crudAction(url, data, actionType, "AMINITIES"))
   }
 }
 
