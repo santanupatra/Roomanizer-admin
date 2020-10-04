@@ -62,10 +62,11 @@ const DefaultHeader = props => { {
     }, [props.setting]);
     useEffect(() => {
 
-      console.log(props.profile)
-      // if (props.profile.profile) {
-      //   setFields({ ...fields, ...props.profile.profile })
-      // }
+      console.log("profilepic",props.profile.profile)
+      if (props.profile.profile) {
+        // console.log("profilepic",props.profile.profile.profilePicture)
+        setFields({ ...fields, ...props.profile.profile })
+      }
   
     }, [props.profile]);
 // console.log("from header===>>>",props.auth);

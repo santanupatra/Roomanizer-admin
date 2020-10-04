@@ -12,12 +12,12 @@ import setting from './setting';
 import contact from './contact';
 import house from './house'
  import city from './city'
- import animities from './animities'
+ import aminities from './aminities'
 
 export default combineReducers({
     auth,
     dashboard,
-    animities,
+    aminities,
     profile,
     user,
     room,
