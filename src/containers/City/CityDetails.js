@@ -15,14 +15,13 @@ import { CITY_URL } from '../../shared/allApiUrl';
 
 function CityDetails(props) {
   let cityId = props.match.params.cityId;
-  // const userData = props.user.user;
+  
   const [cmsData, setCmsDate] = useState(null);
 
   useEffect(() => {
 
     props.crudActionCall(`${CITY_URL}/${cityId}`, null, "GET")
-    // let viewData = props.cms.cmsList.filter(f => f._id === parseInt(cmsId));
-    // setCmsDate(viewData);
+    
 
     return () => {
 
