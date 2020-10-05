@@ -104,7 +104,7 @@ function ContactList(props) {
                                 {/* <Col xs="1" className="text-right"> */}
                                 <Button color="primary" className="px-4" onClick={handleFilter}>
                                     Search
-                </Button>
+                                </Button>
                                 {/* </Col> */}
                             </Row>
                         </CardHeader>
