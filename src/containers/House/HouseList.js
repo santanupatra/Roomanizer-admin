@@ -12,7 +12,7 @@ const initialState = {
 
 
 function HouseList(props) {
-
+console.log( props.house.houseList.list)
     const [house, setTrip] = useState({ ...initialState });
     const [totalPage, setTotalPage] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
@@ -20,7 +20,7 @@ function HouseList(props) {
 
 
     const getHouseList = () => {
-        props.crudActionCall(HOUSE_URL, null, "GET_ALL")
+        props.crudActionCall(HOUSE_URL+ '?keyword&page=0', null, "GET_ALL")
     }
 
     useEffect(() => {
@@ -130,16 +130,16 @@ function HouseList(props) {
                             <Table hover bordered striped responsive size="sm">
                                 <thead>
                                     <tr>
-                                        <th style={{ width: "348px" }} className="text-center">House Name</th>
+                                        <th style={{ width: "348px" }} className="text-center">House Rules</th>
                                         <th style={{ width: "348px" }} className="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {props.house ?
-                                        props.house.houseList.map((val) => {
+                                    {props.house && props.house.houseList.count > 0 ?
+                                        props.house.houseList.list.map((val,index) => {
 
                                             return (
-                                                <tr>
+                                                <tr key={index}>
                                                     <td className="text-center">{val.name}</td>
                                                     <td className="text-center">
                                                         <Button size="sm" className="btn-twitter btn-brand mr-1 mb-1" data-toggle="tooltip" title="Edit" onClick={() => navToEditPage(val._id)}>
