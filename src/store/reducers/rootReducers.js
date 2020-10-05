@@ -10,17 +10,18 @@ import email from './email';
 import cms from './cms';
 import setting from './setting';
 import contact from './contact';
-// import food from './food';
-// import service from './service';
+import house from './house'
  import city from './city'
-// import province from './province'
+ import aminities from './aminities'
 
 export default combineReducers({
     auth,
     dashboard,
+    aminities,
     profile,
     user,
     room,
+    house,
     // chef,
     landlord,
     email,

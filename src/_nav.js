@@ -23,7 +23,44 @@ export default {
         }
       ]
     },
+
+
+    {
+      name: 'House Rules',
+      url: '/house',
+      icon: 'fa fa-users',
+      children: [
+        {
+          name: 'Add',
+          url: '/house/add',
+          icon: 'fa fa-user-plus',
+        },
+        {
+          name: 'List',
+          url: '/house/list',
+          icon: 'fa fa-list-alt',
+        }
+      ]
+    },
     
+
+    {
+      name: 'Aminities',
+      url: '/animities',
+      icon: 'fa fa-users',
+      children: [
+        {
+          name: 'Add',
+          url: '/animities/add',
+          icon: 'fa fa-user-plus',
+        },
+        {
+          name: 'List',
+          url: '/animities/list',
+          icon: 'fa fa-list-alt',
+        }
+      ]
+    },
 
     {
       name: 'Manage Landlord',
