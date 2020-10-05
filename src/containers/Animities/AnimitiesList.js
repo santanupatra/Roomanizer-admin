@@ -99,7 +99,7 @@ function AminitiesList(props) {
 
                             <Row>
                                 <Col xs="6">
-                                    <i className="fa fa-align-justify"></i> ANIMITIES List
+                                    <i className="fa fa-align-justify"></i> Animities List
                 </Col>
                                 <Col xs="4" className="text-right" style={{ textAlign: "end" }}>
                                     <Input
