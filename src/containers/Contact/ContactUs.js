@@ -116,23 +116,27 @@ console.log(props)
                 <thead>
                   <tr>
 
-                    {/* {/ <th>Address</th > /} */}
-                      < th > Name</ th>
-                  <th>Email</th>
-                  <th>Subject</th>
-                  <th className="text-center">Send Reply</th>
+                                        {/* <th>Address</th> */}
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Subject</th>
+                                        <th>Message</th>
+                                        <th>Create Date</th>
+                                        <th className="text-center">Send Reply</th>
                                     </tr>
                                 </thead>
               <tbody>
                 {props.contact && props.contact.contactList.count > 0 ?
                                         props.contact.contactList.list.map((val)  => {
 
-                    return (
-                      <tr>
-                        <td className="text-center">{val.name}</td>
-                        <td className="text-center">{val.email}</td>
-                        <td className="text-center">{val.subject}</td>
-                        <td className="text-center">
+                                            return (
+                                                <tr>
+                                                    <td className="text-center">{val.name}</td>
+                                                    <td className="text-center">{val.email}</td>
+                                                    <td className="text-center">{val.subject}</td>
+                                                    <td className="text-center">{val.message}</td>
+                                                    <td className="text-center">{val.createdDate}</td>
+                                                    <td className="text-center">
 
                           {/* {/ <a  class="btn btn-primay" href={`mailto:${val.email}`}>EmailButton</a > /} */}
                                                         {/* {/ <buttonr class="btn btn-primay"> /} */}
