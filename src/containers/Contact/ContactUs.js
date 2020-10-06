@@ -117,6 +117,8 @@ function ContactList(props) {
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Subject</th>
+                                        <th>Message</th>
+                                        <th>Create Date</th>
                                         <th className="text-center">Send Reply</th>
                                     </tr>
                                 </thead>
@@ -129,6 +131,8 @@ function ContactList(props) {
                                                     <td className="text-center">{val.name}</td>
                                                     <td className="text-center">{val.email}</td>
                                                     <td className="text-center">{val.subject}</td>
+                                                    <td className="text-center">{val.message}</td>
+                                                    <td className="text-center">{val.createdDate}</td>
                                                     <td className="text-center">
 
                                                         {/* <a  class="btn btn-primay" href={`mailto:${val.email}`}>EmailButton</a> */}
