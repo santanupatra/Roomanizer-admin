@@ -1,13 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect ,useState} from 'react';
 import { connect } from "react-redux";
 import { crudAction } from "../../store/actions/common";
-import { Badge, Card, CardBody, Button, CardHeader, Col, Pagination, PaginationItem, PaginationLink, Row, Table } from 'reactstrap';
+import { Badge, Card, CardBody, Button,Input, CardHeader,CardFooter, Col, Pagination, PaginationItem, PaginationLink, Row, Table } from 'reactstrap';
 import { USER_URL } from '../../shared/allApiUrl';
 import { getImageUrl } from '../../shared/helpers';
 import { withRouter } from 'react-router-dom';
 import moment from 'moment'
+const initialState = {
+    searchParam: "",
+};
 function UserList(props) {
-
+    const [user, setUser] = useState({ ...initialState });
+    const [totalPage, setTotalPage] = useState(0);
+    const [currentPage, setCurrentPage] = useState(0);
+    const [searchMode, setSearchMode] = useState(false);
     const getUserList = () => {
         props.crudActionCall(USER_URL + '?keyword&page=0', null, "GET_ALL")
     }
@@ -37,6 +43,55 @@ function UserList(props) {
         props.crudActionCall(`${USER_URL}/${userId}`, null, "DELETE");
         // props.crudActionCall(userId, "DELETE");
     }
+    useEffect(() => {
+        let y = props.user.userList.limit;
+        let x = parseInt(props.user.userList.count / y);
+        if (props.user.userList.count > x * y) {
+            setTotalPage(x + 1);
+            console.log(x + 1)
+        } else {
+            setTotalPage(x);
+            console.log(x)
+        }
+    }, [props.user.userList.count]);
+    const handleSearch = (name, value) => {
+        setUser((prevState) => ({ ...prevState, [name]: value }));
+    };
+    const handleFilter = (e) => {
+        setSearchMode(true);
+        props.crudActionCall(
+            `${USER_URL}?keyword=${user.searchParam}&page=0`,
+            null,
+            "GET_ALL"
+        );
+        console.log(props.user)
+    };
+    const handleClick = (e, index) => {
+        e.preventDefault();
+        if (searchMode) {
+            if (currentPage === index) {
+                return;
+            } else {
+                setCurrentPage(index);
+                props.crudActionCall(
+                    `${USER_URL}?keyword=${user.searchParam}&page=${index}`,
+                    null,
+                    "GET_ALL"
+                );
+            }
+        } else {
+            if (currentPage === index) {
+                return;
+            } else {
+                setCurrentPage(index);
+                props.crudActionCall(
+                    `${USER_URL}?keyword=&page=${index}`,
+                    null,
+                    "GET_ALL"
+                );
+            }
+        }
+    };
 
     return (
         <div>
@@ -44,7 +99,29 @@ function UserList(props) {
                 <Col>
                     <Card>
                         <CardHeader>
-                            <i className="fa fa-align-justify"></i> User List
+                        <Row>
+                                <Col xs="6">
+                                    <i className="fa fa-align-justify"></i> User  List
+                </Col>
+                                <Col xs="4" className="text-right" style={{ textAlign: "end" }}>
+                                    <Input
+                                        type="text"
+                                        name="searchParam"
+                                        placeholder="User Name"
+                                        autoComplete="name"
+                                        onChange={(e) =>
+                                            handleSearch(e.target.name, e.target.value)
+                                        }
+                                    />
+                                </Col>
+                                {/* <Col xs="1" className="text-right"> */}
+                                <Button color="primary" className="px-4"
+                                    onClick={handleFilter}
+                                >
+                                    Search
+                </Button>
+                                {/* </Col> */}
+                            </Row>
                         </CardHeader>
                         <CardBody>
                             <Table hover bordered striped responsive size="sm">
@@ -89,6 +166,38 @@ function UserList(props) {
                                 </tbody>
                             </Table>
                         </CardBody>
+                        <CardFooter>
+                            <Pagination aria-label="Page navigation example">
+                                <PaginationItem disabled={currentPage <= 0}>
+                                    <PaginationLink
+                                        onClick={(e) => handleClick(e, currentPage - 1)}
+                                        previous
+                                        href="#"
+                                    />
+                                </PaginationItem>
+
+                                {totalPage
+                                    ? [...Array(totalPage)].map((page, i) => (
+                                        <PaginationItem active={i === currentPage} key={i}>
+                                            <PaginationLink
+                                                onClick={(e) => handleClick(e, i)}
+                                                href="#"
+                                            >
+                                                {i + 1}
+                                            </PaginationLink>
+                                        </PaginationItem>
+                                    ))
+                                    : null}
+
+                                <PaginationItem disabled={currentPage >= totalPage - 1}>
+                                    <PaginationLink
+                                        onClick={(e) => handleClick(e, currentPage + 1)}
+                                        next
+                                        href="#"
+                                    />
+                                </PaginationItem>
+                            </Pagination>
+                        </CardFooter>
                     </Card>
                 </Col>
             </Row>
