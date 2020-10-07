@@ -40,6 +40,7 @@ function UserDetails(props) {
             <CardBody>
 
               {props.user.action.data && (
+                
                 <ul className="list-unstyled todo-list">
                   <li>
                     <p>
