@@ -13,7 +13,7 @@ import contact from './contact';
 import house from './house'
  import city from './city'
  import aminities from './aminities'
-
+ 
 export default combineReducers({
     auth,
     dashboard,

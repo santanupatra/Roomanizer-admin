@@ -56,7 +56,7 @@ export default {
         },
         {
           name: 'List',
-          url: '/animities/list',
+          url: '/aminities/list',
           icon: 'fa fa-list-alt',
         }
       ]
