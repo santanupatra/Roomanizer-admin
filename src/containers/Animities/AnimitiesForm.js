@@ -14,14 +14,18 @@ import InputUI from '../../UI/InputUI';
 import { AMINITIES_URL } from '../../shared/allApiUrl';
 import { crudAction } from '../../store/actions/common';
 import { connect } from 'react-redux';
+import FileInput from "../../UI/FileInput";
 import { withRouter } from 'react-router-dom';
 // import * as Action from './Action';
 import { bindActionCreators } from 'redux';
+import { getImageUrl } from '../../shared/helpers';
+
 
 function AminitiesForm(props) {
 
   const initialFields = {
     name: "",
+    aminitiesImage:"",
     //cmsContent: "",
   }
 
@@ -34,14 +38,14 @@ function AminitiesForm(props) {
     setHouseId(params.aminitiesId)
     if (params.aminitiesId) props.crudActionCall(`${AMINITIES_URL}/${params.aminitiesId}`, null, "GET")
   }, [params]);
-
+   console.log(props.aminities.aminities)
   useEffect(() => {
     const action = props.aminities.action;
     if (props. aminities. aminities && params.aminitiesId) {
-      setFields({ ...fields, ...props.animities.animities });
+      setFields({ ...fields, ...props.aminities.aminities });
     }
     if (action.isSuccess && action.type === "ADD" || action.type === "UPDATE")
-      props.history.push("/aminities/list")
+      props.history.push("/")
 
   }, [props.aminities]);
 
@@ -50,13 +54,20 @@ function AminitiesForm(props) {
   //}
 
   const onSubmit = (data) => {
-    if (aminitiesId) data.aminitiesId = aminitiesId;
-    //data.cityContent = cityContent;
+    data.aminitiesImage = data.aminitiesImage[0];
+   if (aminitiesId) data.aminitiesId = aminitiesId;
+    let formData = new FormData();
+    for (let [key, value] of Object.entries(data)) {
+      formData.append(key, value);
+    }
+    console.log(aminitiesId)
     if (aminitiesId) {
-      props.crudActionCall(AMINITIES_URL + `/${aminitiesId}`, data, aminitiesId ? "UPDATE" : "ADD");
+      console.log(aminitiesId)
+      props.crudActionCall(AMINITIES_URL + `/${aminitiesId}`, formData, aminitiesId ? "UPDATE" : "ADD");
     }
     else {
-      props.crudActionCall(AMINITIES_URL, data,aminitiesId ? "UPDATE" : "ADD");
+      console.log(aminitiesId)
+      props.crudActionCall(AMINITIES_URL, formData ,aminitiesId ? "UPDATE" : "ADD");
     }
     props.resetAction();
   }
@@ -81,6 +92,21 @@ function AminitiesForm(props) {
                   })}
                   errors={errors}
                   fields={fields}
+                />
+                {aminitiesId ? (
+                  <div className="text-center" style={{ height: 150 }}>
+                  <img src={getImageUrl(fields.aminitiesImage)} className="rounded-circle" style={{ height: "100%" }} alt="..." />
+                  {/* <img src={'assets/img/dummy-profile-img.png'} class="rounded-circle" width="200" /> */}
+                </div>
+                ) : (
+                  ""
+                )}
+                <FileInput
+                  label="Aminities Picture"
+                  name="aminitiesImage"
+                  register={register}
+                  errors={errors}
+                  required={false}
                 />
                 {/* {cityId ? (
                   <CheckboxUI

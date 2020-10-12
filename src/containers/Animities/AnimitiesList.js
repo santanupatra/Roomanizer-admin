@@ -19,7 +19,7 @@ function AminitiesList(props) {
     const getAminitiesList = () => {
         props.crudActionCall(AMINITIES_URL + '?keyword&page=0', null, "GET")
     }
-
+    console.log(props.aminities.aminities)
     useEffect(() => {
         getAminitiesList();
         return () => {
@@ -131,7 +131,7 @@ function AminitiesList(props) {
                                 </thead>
                                 <tbody>
                                     {props.aminities.aminities ?
-                                        props.aminities.aminities.list.map((val, i) => {
+                                       props.aminities.aminities.list.map((val) => {
 
                                             return (
                                                 <tr>

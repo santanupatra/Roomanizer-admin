@@ -127,9 +127,9 @@ const routes = [
     //-----------------------------Animities------------------------------------
     { path: '/animities', exact: true, name: "Animities", component: AnimitiesList },
     { path: '/animities/add', name: "Add", component: AnimitiesForm },
-    { path: '/animities/edit/: animitiesId', name: "Edit", component: AnimitiesForm },
-    { path: '/animities/list', name: "List", component: AnimitiesList },
-    { path: '/animities/details/: animitiesId', name: "Details", component: AnimitiesDetails },
+    { path: '/animities/edit/:aminitiesId', name: "Edit", component: AnimitiesForm },
+    { path: '/aminities/list', name: "List", component: AnimitiesList },
+    { path: '/animities/details/:animitiesId', name: "Details", component: AnimitiesDetails },
 //  //-----------------------------Manage Province------------------------------------
 //  { path: '/province', exact: true, name: "Province", component: ProvinceList },
 //  { path: '/province/add', name: "Add", component: ProvinceForm },
